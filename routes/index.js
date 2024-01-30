@@ -41,7 +41,7 @@ router.get('/albumInstance/:id/update', albumInstance_controller.albumInstance_u
 
 router.post('/albumInstance/:id/update', albumInstance_controller.albumInstance_update_post)
 
-router.get('/albumInstance/:id', albumInstance_controller.album_detail)
+router.get('/albumInstance/:id', albumInstance_controller.albumInstance_detail)
 
 router.get('/albumInstances', albumInstance_controller.albumInstance_list)
 
