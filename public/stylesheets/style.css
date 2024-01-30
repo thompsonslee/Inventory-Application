@@ -2,6 +2,10 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+.sidebar ul{
+  display: flex;
+  gap: 5px;
+}
 
 a {
   color: #00B7FF;
