@@ -1,0 +1,23 @@
+extends layout
+
+block content 
+    h1 #{title}
+    P
+    strong
+        a(href=(album.artist.url)) #{album.artist.title}
+    P #{album.description}
+    P #{album.formatted_date}
+    ul
+        each genre in album.genre
+            li
+                a(href=genre.url) #{genre.title}
+    a(href=(`${album.url}/update`)) update album
+    a(href=(`${album.url}/delete`)) delete album
+    h2 Album Copies
+    ul
+        each albumInstance in albumInstances
+            li 
+                a(href=albumInstance.url) #{albumInstance._id}
+
+    
+    

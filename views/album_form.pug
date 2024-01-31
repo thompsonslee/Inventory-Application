@@ -1,0 +1,42 @@
+extends layout
+
+block content 
+    h1= title
+
+    form(method="post")
+        div.form-input
+            label(for="title") Title
+            input(type="text", name="title" required value=(album === undefined ? "" : album.title))
+        div.form-input
+            label(for="artist") Artist
+            select(name="artist" required)
+                each artist in allArtists 
+                    if(album)
+                        if album.artist._id === artist._id
+                            option(value=artist._id selected) #{artist.title}
+                        else
+                            option(value=artist._id) #{artist.title}
+                    else
+                        option(value=artist._id) #{artist.title}
+        div.form-input
+            label Genre
+                div
+                    for genre in allGenres
+                        if genre.checked
+                            input(type="checkbox" name="genre" value=genre._id checked)
+                        else
+                            input(type="checkbox" name="genre" value=genre._id)
+                        label(for="genre") #{genre.title}
+            
+        div.form-input
+            label(for="description") Description 
+            textarea(name="description" required)= (album === undefined? "" : album.description)
+        div.form-input
+            label(for="release_date") Release Date
+                input(type="Date" name="release_date" value =(album === undefined ? "" : album.ISO_date))
+        div.form-input
+            button(type="submit") Add Album
+        if errors 
+            ul 
+                for error in errors 
+                    li!= error.msg

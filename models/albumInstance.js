@@ -13,4 +13,8 @@ const AlbumInstanceSchema = new Schema({
     arrival_date:{type: Date}
 })
 
+AlbumInstanceSchema.virtual("url").get(function(){
+    return(`/albumInstance/${this._id}`)
+})
+
 module.exports = mongoose.model("Albuminstance", AlbumInstanceSchema)

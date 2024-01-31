@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+    h1= title
+    if allAlbums.length
+        ul
+            each album in allAlbums
+                li
+                    a(href=album.url) 
+                        div
+                            h2= album.title
+                            h3= album.artist.title
+    else
+        p no albums currently stored
+    a(href="/album/create") add new album
