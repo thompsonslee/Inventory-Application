@@ -1,0 +1,17 @@
+extends layout 
+
+block content
+
+    if albums.length
+        strong the following albums must be deleted before deleting this artist
+        ul
+            each album in albums
+                li 
+                    a(href=album.url)  #{album.title}
+                        img(src=album.coverImageGet)
+    else
+        strong Are you sure you want to delete #{artist.title}?
+        form(method="post")
+            input(type="hidden" name="artistID" value=artist._id)
+            button(type="submit") Yes
+            a(href=artist.url) No

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Artists
+    if  allArtists.length
+        ul
+            each artist in allArtists
+                li
+                    a(href=(artist.url))  #{artist.title}
+    else
+        strong No Artists currently stored
+    a(href="/artist/create") Add new Artist

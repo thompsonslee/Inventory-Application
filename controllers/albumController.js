@@ -98,7 +98,6 @@ exports.album_create_post =[
         saveCover(album,req.body.album_cover)
 
         if(!errors.isEmpty()){
-            console.log("there are errors")
             const [allArtists,allGenres] = await Promise.all([
                 Artist.find().sort({title: 1}).exec(),
                 Genre.find().sort({title:1}).exec()

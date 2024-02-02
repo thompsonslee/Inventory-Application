@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method="post")
+        div.form-input
+            label(for="title") Title
+            input(type="text", name="title" required value=(artist === undefined ? "" : artist.title))
+        div.form-input
+            label(for="description") Description 
+            textarea(name="description" required)= (artist === undefined? "" : artist.description)
+        div.form-input
+            label(for="artist_image") Artist Image
+            input(type="file" required name="artist_image" accept=".jpg" class="filepond")
+        button(type="submit") Add Artist
+        if errors 
+            ul 
+                for error in errors 
+                    li!= error.msg

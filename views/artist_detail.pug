@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h1 #{artist.title}
+    p  #{artist.description}
+    img(src=artist.artistImageGet)
+    a(href=(`${artist.url}/update`)) Update Artist
+    a(href=(`${artist.url}/delete`)) delete Artist
+    h2 Albums
+    if(albums.length)
+        ul
+            each album in albums
+                li
+                    a(href=album.url)
+                        h3  #{album.title}
+                        img(src=album.coverImageGet)
+    else
+        strong No Albums currently stored

@@ -6,6 +6,7 @@ FilePond.registerPlugin(
 
 FilePond.setOptions({
     stylePanelAspectRatio: 1
+    
 })
 
 FilePond.parse(document.body)
