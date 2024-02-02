@@ -9,6 +9,15 @@ const AlbumSchema = new Schema({
     description: { type: String, requred: true},
     release_date: { type: Date, required: true },
     genre: [{ type: Schema.Types.ObjectId, ref: "genre" }],
+    coverImage: { type: Buffer, required: true},
+    coverImageType: { type: String, required: true}
+})
+
+AlbumSchema.virtual('coverImageGet').get(function(){
+    if(this.coverImage != null && this.coverImageType != null){
+        return `data:${this.coverImageType};charset=utf-8;base64,
+        ${this.coverImage.toString('base64')}`
+    }
 })
 
 AlbumSchema.virtual("url").get(function(){

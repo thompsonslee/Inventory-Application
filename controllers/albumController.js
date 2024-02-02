@@ -6,6 +6,13 @@ const { body, validationResult } = require("express-validator")
 
 const asyncHandler = require("express-async-handler")
 
+function saveCover(album, coverEncoded){
+    if(coverEncoded == null) return
+    const cover = JSON.parse(coverEncoded)
+    album.coverImage = new Buffer.from(cover.data, 'base64')
+    album.coverImageType =cover.type
+}
+
 exports.index = asyncHandler( async(req,res,next) => {
     const [
         numAlbums,
@@ -88,6 +95,8 @@ exports.album_create_post =[
             release_date: req.body.release_date,
             genre: req.body.genre
         })
+        saveCover(album,req.body.album_cover)
+
         if(!errors.isEmpty()){
             console.log("there are errors")
             const [allArtists,allGenres] = await Promise.all([
@@ -109,7 +118,7 @@ exports.album_create_post =[
         }
         
         else{
-            album.save()
+            await album.save()
             res.redirect(album.url)
         }
     })
@@ -202,6 +211,7 @@ exports.album_update_post =[
             release_date: req.body.release_date,
             genre: req.body.genre
         })
+        saveCover(album,req.body.album_cover)
         if(!errors.isEmpty()){
             console.log("there are errors")
             const [allArtists,allGenres] = await Promise.all([

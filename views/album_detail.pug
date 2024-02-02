@@ -11,6 +11,7 @@ block content
         each genre in album.genre
             li
                 a(href=genre.url) #{genre.title}
+    img(src=album.coverImageGet)
     a(href=(`${album.url}/update`)) update album
     a(href=(`${album.url}/delete`)) delete album
     h2 Album Copies
