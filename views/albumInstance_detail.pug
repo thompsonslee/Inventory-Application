@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 #{title}
+        a(href=albumInstance.album.url)
+            img(src=albumInstance.album.coverImageGet)
+    strong #{albumInstance.status}
+    if(albumInstance.status=="ordered")
+        strong #{albumInstance.formatted_date}
+    a(href=`${albumInstance.url}/update`) Update
+    a(href=`${albumInstance.url}/delete`) Delete

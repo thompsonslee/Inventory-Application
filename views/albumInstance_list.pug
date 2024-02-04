@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    h1 all Album Copies
+    if albumInstances.length
+        a(href='/albumInstance/create') create album copy
+        ul
+            for instance in albumInstances
+                li
+                    a(href=instance.url)
+                        p #{instance._id}
+    else
+        strong There are no Album copies currently stored on the database
+        a(href='/albumInstance/create') create album copy

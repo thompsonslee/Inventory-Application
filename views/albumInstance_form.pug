@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    if !albums.length
+        strong No Albums currently in database to create a copy
+        a(href="/album/create") Add an Album
+    else
+        h1 #{title}
+        form(method="post")
+            label(for="albums") Select Album
+            select(name="album" required)
+                option(value="") Select an Album
+                each album in albums
+                    if selectedAlbum == album._id.toString()
+                        option(value=album._id selected)  #{album.title}
+                    else
+                        option(value=album._id) #{album.title}
+            label(for="status") Select Status
+            select(name="status")
+                each val in ["available","ordered"]
+                    if(albumInstance === undefined || val != albumInstance.status)
+                        option(value=val)= val
+                    else
+                        option(value=val selected)= val
+            label(for="arrival_date") Arrival Date
+            input(type="date" name="arrival_date" value=(albumInstance === undefined ? "" : albumInstance.ISO_date))
+            button(type="submit") Add Copy
+            if errors 
+                ul 
+                    for error in errors 
+                        li!= error.msg

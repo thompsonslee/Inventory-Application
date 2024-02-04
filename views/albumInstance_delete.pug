@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+    strong are you sure you want to delete this copy?
+
+    form(method="post")
+        input(type="hidden" name="albumInstanceID" value=albumInstance._id)
+        button(type="submit") Yes
+        a(href=albumInstance.url) No
