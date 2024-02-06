@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+    if(albums.length)
+        strong The following Albums must be deleted before deleting this Genre
+        ul
+            each album in albums
+                a(href=album.url)
+                    h2= album.title
+                    img(src=album.coverImageGet)
+    else
+        strong are you sure you want to delete #{genre.title}?
+        form(method="post")
+            input(type="hidden" name="genreID" value=genre._id)
+            button(type="submit") Yes
+            a(href=genre.url) No

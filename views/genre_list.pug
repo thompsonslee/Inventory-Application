@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+
+    h1 #{title}
+    if !genres.length
+        strong No Genres currently stored
+        a(href="/genre/create") Add Genre
+    else
+        a(href="/genre/create") Add Genre
+        ul
+        each genre in genres
+            li
+                a(href=genre.url) #{genre.title}

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+    h1 #{title}
+    a(href=`${genre.url}/update`) Update Genre
+    a(href=`${genre.url}/delete`) Delete Genre
+    ul
+        each album in albums
+            li
+                a(href=album.url)
+                    h2= album.title
+                    img(src=album.coverImageGet)
