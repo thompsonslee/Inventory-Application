@@ -21,6 +21,7 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "image-to-base64": "^2.2.0",
     "nodemon": "^3.0.3"
   }
 }
