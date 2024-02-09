@@ -1,6 +1,6 @@
 const Album = require ("../models/album")
 const Artist = require ("../models/artist")
-const albumInstance = require("../models/albumInstance")
+const AlbumInstance = require("../models/albumInstance")
 const Genre = require("../models/genre")
 const { body, validationResult } = require("express-validator")
 
@@ -21,7 +21,7 @@ exports.index = asyncHandler( async(req,res,next) => {
         numGenres
     ] = await Promise.all([
         Album.countDocuments({}).exec(),
-        albumInstance.countDocuments({}).exec(),
+        AlbumInstance.countDocuments({}).exec(),
         Artist.countDocuments({}).exec(),
         Genre.countDocuments({}).exec()
     ])
@@ -121,7 +121,7 @@ exports.album_create_post =[
 exports.album_delete_get = asyncHandler( async(req,res,next) => {
     const [album,albumInstances] = await Promise.all([
         Album.findById(req.params.id),
-        albumInstance.find({book: req.params.id})
+        AlbumInstance.find({book: req.params.id})
     ])
     res.render("album_delete",{
         album: album,
@@ -132,7 +132,7 @@ exports.album_delete_get = asyncHandler( async(req,res,next) => {
 exports.album_delete_post = asyncHandler( async(req,res,next) => {
     const [album,albumInstances] = await Promise.all([
         Album.findById(req.params.id).exec(),
-        albumInstance.find({book:req.params.id})
+        AlbumInstance.find({book:req.params.id})
     ])
     if(albumInstances > 0){
         res.render("album_delete", {
@@ -234,8 +234,7 @@ exports.album_detail = asyncHandler( async(req,res,next) => {
         Album.findById(req.params.id)
         .populate("artist")
         .exec(),
-
-        albumInstance.find({book:req.params._id})
+        AlbumInstance.find({album:req.params.id})
             .exec()
     ])
     res.render("album_detail",{
