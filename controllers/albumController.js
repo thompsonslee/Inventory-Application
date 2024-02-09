@@ -76,10 +76,6 @@ exports.album_create_post =[
         .trim()
         .isLength({min:1})
         .escape(),
-    body("description","Description must not be empty")
-        .trim()
-        .isLength({min:1})
-        .escape(),
     body("release_date", "Release date must not be empty")
         .toDate(),
     body("genre")
@@ -91,7 +87,6 @@ exports.album_create_post =[
         const album = new Album({
             title: req.body.title,
             artist: req.body.artist,
-            description: req.body.description,
             release_date: req.body.release_date,
             genre: req.body.genre
         })
@@ -190,10 +185,6 @@ exports.album_update_post =[
         .trim()
         .isLength({min:1})
         .escape(),
-    body("description","Description must not be empty")
-        .trim()
-        .isLength({min:1})
-        .escape(),
     body("release_date", "Release date must not be empty")
         .toDate(),
     body("genre")
@@ -206,7 +197,6 @@ exports.album_update_post =[
             _id: req.params.id,
             title: req.body.title,
             artist: req.body.artist,
-            description: req.body.description,
             release_date: req.body.release_date,
             genre: req.body.genre
         })

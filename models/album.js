@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const AlbumSchema = new Schema({
     title: { type: String, required: true },
     artist: { type: Schema.Types.ObjectId, ref: "artist", required: true },
-    description: { type: String, requred: true},
+    description: { type: String},
     release_date: { type: Date, required: true },
     genre: [{ type: Schema.Types.ObjectId, ref: "genre" }],
     coverImage: { type: Buffer, required: true},

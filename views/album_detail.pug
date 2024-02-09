@@ -5,7 +5,6 @@ block content
     P
     strong
         a(href=(album.artist.url)) #{album.artist.title}
-    P #{album.description}
     P #{album.formatted_date}
     ul
         each genre in album.genre

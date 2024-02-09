@@ -27,10 +27,6 @@ block content
                         else
                             input(type="checkbox" name="genre" value=genre._id)
                         label(for="genre") #{genre.title}
-            
-        div.form-input
-            label(for="description") Description 
-            textarea(name="description" required)= (album === undefined? "" : album.description)
         div.form-input
             label(for="release_date") Release Date
                 input(type="Date" name="release_date" value =(album === undefined ? "" : album.ISO_date))
