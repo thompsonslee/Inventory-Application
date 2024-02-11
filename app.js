@@ -5,6 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose')
+const compression = require("compression")
+const helmet = require("helmet")
 
 mongoose.set('strictQuery',false)
 
@@ -20,15 +22,29 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
-
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+app.use(limiter)
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "script-src": ["'self'", "https://unpkg.com"],
+      },
+    },
+  }),
+)
 app.use(logger('dev'));
 app.use(express.json({limit: '2000kb'}));
 app.use(express.urlencoded({limit:'2mb', extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
