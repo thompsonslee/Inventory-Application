@@ -1,12 +1,338 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html{
+  height: 100%;
 }
-.sidebar ul{
+:root{
+  --main: #0076d6;
+  --main-hover: #005dd6;
+  --offwhite: #f7f5ee;
+  --delete-button: #da5858;
+  --delete-button-hover: #d13f3f;
+}
+li{
+  list-style: none;
+}
+ul{
+  padding: 0;
+}
+a,a:visited{
+  text-decoration: none;
+}
+.blue-btn{
   display: flex;
-  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  padding: 10px 20px 10px 20px;
+  background-color: var(--main);
+  color: white;
+  border-radius: 10px;
+}
+.blue-btn:hover{
+  background-color: var(--main-hover);
+}
+.red-btn{
+  border: 0;
+  padding: 10px 20px 10px 20px;
+  background-color: var(--delete-button);
+  color: white;
+  border-radius: 10px;
+}
+.red-btn:hover{
+  background-color: var(--delete-button-hover);
 }
 
-a {
-  color: #00B7FF;
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.sidebar{
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  font-size: large;
+  background-color: var(--main);
+}
+.sidebar ul{
+  margin-top: 30px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+.sidebar a{
+  color: white;
+
+}
+
+.sidebar a:hover{
+  text-decoration: underline;
+}
+
+.main{
+  margin-left: 50px;
+}
+
+.albumList{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+.albumLI:hover{
+  scale: 1.02;
+}
+.addAlbum{
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bolder;
+  height: 100px;
+  border-radius: 10px;
+  color: black;
+}
+.albumLI a{
+  background-color: var(--main);
+  color: white;
+  display: flex;
+  border-radius: 10px;
+}
+.albumLI div{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.albumLI img{
+  border-radius: 10px 0 0 10px;
+  object-fit: contain;
+  height: 100px;
+  width: 100px;
+}
+
+.artist-link{
+  color: black;
+}
+.artist-link:hover{
+  text-decoration: underline;
+}
+.album-detail-artist-date{
+  display: flex;
+  gap: 10px
+}
+.album-detail-img{
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
+  margin-bottom: 10px;
+}
+
+.update-delete-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+.form-body{
+  display: flex;
+  gap: 30px;
+}
+.form-left-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+label{
+  font-size: 20px;
+}
+.form-input{
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.form-input input,.form-input select{
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px;
+}
+.genre-checkboxes{
+  display: flex;
+  flex-direction: column;
+}
+.genre-checkboxes label{
+  font-size: 16px;
+}
+.file-upload{
+  height: 300px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.form-submit-btn{
+  color: white;
+  border: 0;
+  background-color: var(--main);
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+.form-submit-btn:hover{
+  background-color: var(--main-hover);
+}
+
+
+.delete-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 50px;
+}
+.delete-form strong{
+  font-size: 32px;
+}
+.delete-form form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+}
+.delete-form button,.delete-form a{
+  flex-grow: 1;
+}
+.delete-form a{
+  display: flex;
+  justify-content: center;
+}
+.album-instances-todelete{
+  margin-top: 50px;
+}
+.album-instances-todelete strong{
+  font-size: 20px;
+}
+
+.albumInstance-detail-bottom{
+  display: flex;
+  flex-direction: column;
+}
+.albumInstance-detail-bottom-details{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.albumInstance-buttons{
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.album-instance-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.artist-detail-buttons{
+  display: flex;
+  gap: 10px
+}
+.artist-description{
+  max-width: fit-content;
+}
+.artist-detail-album-list{
+  display: flex;
+  gap: 10px;
+  padding: 0;
+}
+.artist-detail-albumLI{
+  color: white;
+  border-radius: 16px;
+  max-width: 300px;
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+}
+.artist-detail-albumLI:hover{
+  scale: 1.04;
+}
+.artist-detail-albumLI h3{
+  margin-left: 10px;
+}
+.artist-detail-albumLI img{
+  border-radius: 16px 16px 0 0;
+  object-fit: contain;
+  width: 100%;
+  height: 100%
+}
+
+.genre-list{
+  display: flex;
+  padding: 0;
+  gap: 10px;
+}
+
+.genreLI{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(145, 145, 145);
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+.genreLI:hover{
+  background-color: rgb(110, 110, 110);
+}
+.add-genre-btn{
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: rgb(187, 187, 187);
+}
+.albumInstance-delete-container{
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.genre-form-btn{
+  margin-top: 15px;
+}
+
+.albumInstance-delete-buttons{
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.albumInstance-delete-buttons > * {
+  font-size: 20px;
+  flex-grow: 1;
+}
+
+.album-instance-list{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.album-instance-list a:hover{
+  text-decoration: underline;
+}
+.album-instance-LI-available{
+  color: darkgreen;
+}
+.album-instance-LI-ordered{
+  color: darkgoldenrod;
+}
+.delete-container{
+  margin-top: 50px;
+}
+.delete-container strong{
+  font-size: 20px;
 }

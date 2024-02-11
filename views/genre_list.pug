@@ -5,10 +5,11 @@ block content
     h1 #{title}
     if !genres.length
         strong No Genres currently stored
-        a(href="/genre/create") Add Genre
+        a(class="blue-btn" href="/genre/create") Add Genre
     else
-        a(href="/genre/create") Add Genre
-        ul
-        each genre in genres
+        ul.genre-list
             li
-                a(href=genre.url) #{genre.title}
+                a(class="genreLI" class="add-genre-btn" href="/genre/create") +
+            each genre in genres
+                li
+                    a(class= "genreLI" href=genre.url) #{genre.title}

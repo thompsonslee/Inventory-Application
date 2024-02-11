@@ -2,10 +2,13 @@ extends layout
 
 block content
     h1 #{title}
-        a(href=albumInstance.album.url)
-            img(src=albumInstance.album.coverImageGet)
-    strong #{albumInstance.status}
-    if(albumInstance.status=="ordered")
-        strong #{albumInstance.formatted_date}
-    a(href=`${albumInstance.url}/update`) Update
-    a(href=`${albumInstance.url}/delete`) Delete
+    a(href=albumInstance.album.url)
+        img(class="album-detail-img" src=albumInstance.album.coverImageGet)
+    div.albumInstance-detail-bottom
+        div.albumInstance-detail-bottom-details
+            strong #{albumInstance.status}
+            if(albumInstance.status=="ordered")
+                strong arrival date: #{albumInstance.formatted_date}
+        div.albumInstance-buttons
+            a(class="blue-btn" href=`${albumInstance.url}/update`) Update
+            a(class="red-btn" href=`${albumInstance.url}/delete`) Delete

@@ -1,17 +1,22 @@
 extends layout
 
 block content
-
-    if(albums.length)
-        strong The following Albums must be deleted before deleting this Genre
-        ul
-            each album in albums
-                a(href=album.url)
-                    h2= album.title
-                    img(src=album.coverImageGet)
-    else
-        strong are you sure you want to delete #{genre.title}?
-        form(method="post")
-            input(type="hidden" name="genreID" value=genre._id)
-            button(type="submit") Yes
-            a(href=genre.url) No
+    div.delete-container
+        if(albums.length)
+            strong The following Albums must be deleted before deleting this Genre
+            ul(class="albumList")
+                each album in albums
+                    li(class="albumLI")
+                        a(href=album.url)
+                            img(src=album.coverImageGet, alt="album cover")
+                            div
+                                h2= album.title
+                                h3= album.artist.title
+        else
+            div.delete-form
+                strong are you sure you want to delete #{genre.title}?
+                form(method="post")
+                    input(type="hidden" name="genreID" value=genre._id)
+                    div.albumInstance-delete-buttons
+                        button(class="red-btn" type="submit") Yes
+                        a(class="blue-btn" href=genre.url) No

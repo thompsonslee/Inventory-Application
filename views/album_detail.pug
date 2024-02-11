@@ -1,23 +1,28 @@
 extends layout
 
-block content 
-    h1 #{title}
-    P
-    strong
-        a(href=(album.artist.url)) #{album.artist.title}
-    P #{album.formatted_date}
-    ul
-        each genre in album.genre
-            li
-                a(href=genre.url) #{genre.title}
-    img(src=album.coverImageGet)
-    a(href=(`${album.url}/update`)) update album
-    a(href=(`${album.url}/delete`)) delete album
-    h2 Album Copies
-    ul
-        each albumInstance in albumInstances
-            li 
-                a(href=albumInstance.url) #{albumInstance._id}
+block content
+    div(class="album-detail")
+        h1 #{title}
+        div(class="album-detail-artist-date")
+            strong
+                a(class="artist-link" href=(album.artist.url)) #{album.artist.title}
+            strong #{album.formatted_date}
+        ul
+            each genre in album.genre
+                li
+                    a(href=genre.url) #{genre.title}
+        img(class="album-detail-img" src=album.coverImageGet)
+        div(class="update-delete-buttons")
+            a(class="blue-btn" href=(`${album.url}/update`)) update album
+            a(class="red-btn" href=(`${album.url}/delete`)) delete album
+        h2 Album Copies
+        ul.album-instance-list
+            each albumInstance in albumInstances
+                li 
+                    if (albumInstance.status === "available")
+                        a(class="album-instance-LI-available" href=albumInstance.url) copy of #{title} (available)
+                    else
+                        a(class ="album-instance-LI-ordered" href=albumInstance.url) copy of #{title} (arrival date: #{albumInstance.formatted_date})
 
     
     

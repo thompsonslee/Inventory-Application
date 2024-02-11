@@ -4,12 +4,14 @@ block content
 
     h1 all Album Copies
     if albumInstances.length
-        a(href='/albumInstance/create') create album copy
-        ul
+        a(class="blue-btn" href='/albumInstance/create') create album copy
+        ul.album-instance-list
             for instance in albumInstances
                 li
-                    a(href=instance.url)
-                        p #{instance._id}
+                    if (instance.status === "ordered")
+                        a(class ="album-instance-LI-ordered" href=instance.url) copy of #{instance.album.title} (arrival date: #{instance.formatted_date})
+                    else
+                        a(class ="album-instance-LI-available" href=instance.url) copy of #{instance.album.title} (available)
     else
         strong There are no Album copies currently stored on the database
         a(href='/albumInstance/create') create album copy

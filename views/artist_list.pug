@@ -3,10 +3,14 @@ extends layout
 block content
     h1 Artists
     if  allArtists.length
-        ul
+        ul(class="albumList")
+            a(class="albumLI" class="addAlbum" href="/artist/create") +
             each artist in allArtists
-                li
-                    a(href=(artist.url))  #{artist.title}
+                li(class="albumLI")
+                    a(href=(artist.url))
+                        img(src=artist.artistImageGet, alt="artist Image")
+                        div
+                            h2= artist.title
     else
         strong No Artists currently stored
-    a(href="/artist/create") Add new Artist
+        a(href="/artist/create") Add new Artist

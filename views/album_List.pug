@@ -3,13 +3,15 @@ extends layout
 block content
     h1= title
     if allAlbums.length
-        ul
+        ul(class="albumList")
+            a(class="addAlbum" class="albumLI" href="/album/create") +
             each album in allAlbums
-                li
+                li(class="albumLI")
                     a(href=album.url) 
+                        img(src=album.coverImageGet, alt="album cover")
                         div
                             h2= album.title
                             h3= album.artist.title
     else
         p no albums currently stored
-    a(href="/album/create") add new album
+        a(class="addAlbum" href="/album/create") add new album

@@ -12,7 +12,7 @@ block content
         div.form-input
             label(for="artist_image") Artist Image
             input(type="file" required name="artist_image" accept=".jpg" class="filepond")
-        button(type="submit") Add Artist
+        button(class="blue-btn" type="submit") Add Artist
         if errors 
             ul 
                 for error in errors 

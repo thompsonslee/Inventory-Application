@@ -3,11 +3,14 @@ extends layout
 block content
 
     h1 #{title}
-    a(href=`${genre.url}/update`) Update Genre
-    a(href=`${genre.url}/delete`) Delete Genre
-    ul
+    div.artist-detail-buttons
+        a(class="blue-btn" href=`${genre.url}/update`) Update Genre
+        a(class="red-btn" href=`${genre.url}/delete`) Delete Genre
+    ul(class="albumList")
         each album in albums
-            li
+            li(class="albumLI")
                 a(href=album.url)
-                    h2= album.title
                     img(src=album.coverImageGet)
+                    div
+                        h2= album.title
+                        h3= album.description

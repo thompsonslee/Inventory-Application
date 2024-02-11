@@ -3,9 +3,10 @@ extends layout
 block content
     h1 #{title}
     form(method="post")
-        label(for="title") Title
-        input(type="text" name="title" value=(genre === undefined ? "" : genre.title))
-        button(type="submit") Add
+        div.form-input
+            label(for="title") Title
+            input(type="text" name="title" value=(genre === undefined ? "" : genre.title))
+        button(class="genre-form-btn" class="blue-btn" type="submit") Add
     if errors 
         ul 
             for error in errors 
