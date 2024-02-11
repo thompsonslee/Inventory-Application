@@ -35,7 +35,7 @@ exports.index = asyncHandler( async(req,res,next) => {
 })
 
 exports.album_list = asyncHandler( async(req,res,next) => {
-    const allAlbums = await Album.find({}, 'title artist')
+    const allAlbums = await Album.find({})
         .sort({title: 1})
         .populate("artist")
         .exec();
@@ -121,7 +121,7 @@ exports.album_create_post =[
 exports.album_delete_get = asyncHandler( async(req,res,next) => {
     const [album,albumInstances] = await Promise.all([
         Album.findById(req.params.id),
-        AlbumInstance.find({book: req.params.id})
+        AlbumInstance.find({album: req.params.id})
     ])
     res.render("album_delete",{
         album: album,
@@ -132,7 +132,7 @@ exports.album_delete_get = asyncHandler( async(req,res,next) => {
 exports.album_delete_post = asyncHandler( async(req,res,next) => {
     const [album,albumInstances] = await Promise.all([
         Album.findById(req.params.id).exec(),
-        AlbumInstance.find({book:req.params.id})
+        AlbumInstance.find({album:req.params.id})
     ])
     if(albumInstances > 0){
         res.render("album_delete", {
